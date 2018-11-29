@@ -13,6 +13,23 @@ const resolvers = (models) => ({
       const user = new models.User(args);
       return user.save().then((response) => response);
     },
+    async createLaunch(root, args) {
+      await models.Launch.create(args.input).then((service) => {
+          response.service = service
+      }).catch((err) => {
+          let errors = err.errors.map(error => {
+              return {
+                  code: error.path,
+                  message: error.message
+              }
+          })
+          response.message = "There was an error creating the action"
+          response.errors = errors
+      })
+      // return response
+      console.log(response)
+      return response
+    }
   },
 });
 

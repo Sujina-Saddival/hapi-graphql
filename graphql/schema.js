@@ -1,22 +1,28 @@
-const schema = `
-  type User {
-    id: ID!
-    email: String!
-  }
+// const schema = `
+//   type User {
+//     id: ID!
+//     email: String!
+//   }
 
-  type Query {
-    getUserById(id: ID!): User
-    getUserByEmail(email: String!): User
-  }
+//   type Launch {
+//     id: ID!
+//     name: String!
+//   }
 
-  type Mutation {
-    createUser(email: String!): User
-  }
+//   type Query {
+//     getUserById(id: ID!): User
+//     getUserByEmail(email: String!): User
+//   }
 
-  schema {
-    query: Query
-    mutation: Mutation
-  }
-`;
+//   type Mutation {
+//     createUser(email: String!): User
+//     createLaunch(name: String!): Launch
+//   }
 
-module.exports = schema;
+//   schema {
+//     query: Query
+//     mutation: Mutation
+//   }
+// `;
+
+// module.exports = schema;

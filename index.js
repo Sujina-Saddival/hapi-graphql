@@ -1,12 +1,14 @@
 const hapi = require('hapi');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const { apolloHapi, graphiqlHapi } = require('apollo-server');
-const { makeExecutableSchema } = require('graphql-tools');
+const Schema = require("./graphql");
 
-const User = require('./models/user');
+// const { makeExecutableSchema } = require('graphql-tools');
 
-const graphqlSchema = require('./graphql/schema');
-const createResolvers = require('./graphql/resolvers');
+// const User = require('./models/user');
+
+// const graphqlSchema = require('./graphql/schema');
+// const createResolvers = require('./graphql/resolvers');
 
 const server = new hapi.Server();
 
@@ -15,12 +17,12 @@ server.connection({
   port: 8080,
 });
 
-mongoose.connect('mongodb://localhost:27017/test_db1');
+// mongoose.connect('mongodb://localhost:27017/test_db1');
 
-const executableSchema = makeExecutableSchema({
-  typeDefs: [graphqlSchema],
-  resolvers: createResolvers({ User }),
-});
+// const executableSchema = makeExecutableSchema({
+//   typeDefs: [graphqlSchema],
+//   resolvers: createResolvers({ User }),
+// });
 
 server.register({
   register: apolloHapi,
@@ -28,7 +30,7 @@ server.register({
     path: '/graphql',
     apolloOptions: () => ({
       pretty: true,
-      schema: executableSchema,
+      schema: Schema,
     }),
   },
 });
