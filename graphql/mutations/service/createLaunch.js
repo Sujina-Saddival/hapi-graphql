@@ -7,6 +7,7 @@ const GraphQLList = GraphQL.GraphQLList
 const ServiceType = require('../../types/launch')
 
 const Models = require('../../../models/index.js')
+import { GraphQLUpload } from 'graphql-upload'
 
 const CreateLaunchInput = new GraphQLInputObjectType({
     name: "CreateLaunchInput",
@@ -17,6 +18,10 @@ const CreateLaunchInput = new GraphQLInputObjectType({
                 type: GraphQLString,
                 description: 'Lorem ipsum dolar sit'
             },
+            image: {
+                description: 'Image file.',
+                type: GraphQLUpload,
+          }
         }
     }
 })
