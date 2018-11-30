@@ -1,6 +1,7 @@
 const hapi = require('hapi');
 // const mongoose = require('mongoose');
 const { apolloHapi, graphiqlHapi } = require('apollo-server');
+const { apolloUploadExpress } =  require("apollo-upload-server");
 const Schema = require("./graphql");
 
 // const { makeExecutableSchema } = require('graphql-tools');

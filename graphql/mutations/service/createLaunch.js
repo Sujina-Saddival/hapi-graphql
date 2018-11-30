@@ -7,7 +7,7 @@ const GraphQLList = GraphQL.GraphQLList
 const ServiceType = require('../../types/launch')
 
 const Models = require('../../../models/index.js')
-import { GraphQLUpload } from 'graphql-upload'
+const { GraphQLUpload } =  require('graphql-upload')
 
 const CreateLaunchInput = new GraphQLInputObjectType({
     name: "CreateLaunchInput",
