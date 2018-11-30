@@ -10,16 +10,16 @@ module.exports = new GraphQLObjectType({
     return {
       id: {
         type: GraphQLString,
-        description: "Unique identifier of the service",
-        resolve(service) {
-          return service.id;
+        description: "Unique identifier of the launch",
+        resolve(launch) {
+          return launch.id;
         }
       },
       name: {
         type: GraphQLString,
-        description: "The unique name for the service",
-        resolve(service) {
-          return service.name;
+        description: "The unique name for the launch",
+        resolve(launch) {
+          return launch.name;
         }
       },
     };

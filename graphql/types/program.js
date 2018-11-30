@@ -8,16 +8,16 @@ module.exports = new GraphQLObjectType({
     return {
       id: {
         type: GraphQLString,
-        description: "Unique identifier of the user",
-        resolve(user) {
-          return user.id;
+        description: "Unique identifier of the Program",
+        resolve(program) {
+          return program.id;
         }
       },
       name: {
         type: GraphQLString,
-        description: "Full name of the user",
-        resolve(user) {
-          return user.name;
+        description: "Full name of the Program",
+        resolve(program) {
+          return program.name;
         }
       },
     };

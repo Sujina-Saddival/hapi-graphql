@@ -1,7 +1,7 @@
 const hapi = require('hapi');
 // const mongoose = require('mongoose');
 const { apolloHapi, graphiqlHapi } = require('apollo-server');
-const { apolloUploadExpress } =  require("apollo-upload-server");
+const { apolloUploadExpress, processRequest } =  require("apollo-upload-server");
 const Schema = require("./graphql");
 
 // const { makeExecutableSchema } = require('graphql-tools');
@@ -44,7 +44,30 @@ server.register({
       endpointURL: '/graphql',
     },
   },
+    route: {
+            pre: [
+                {
+                    method: async (req, reply) => {
+                        try {
+                            const processedRequest = await processRequest(req, {
+                                uploadDir: '/tmp'
+                            });
+                        } catch(e) {
+                            console.log(e);
+                        }
+                    },
+                    assign: 'fileUpload'
+                }
+            ]
+        },
 });
+
+// server.register({
+//   register: apolloUploadExpress,
+//   options: {
+//     uploadDir: './',
+//   },
+// });
 
 server.start((err) => {
   if (err) {
